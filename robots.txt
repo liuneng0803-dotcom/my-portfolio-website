@@ -1,0 +1,40 @@
+# 网站爬虫配置文件
+# robots.txt for 张三的个人网站
+
+User-agent: *
+Allow: /
+
+# 禁止爬取的目录
+Disallow: /assets/temp/
+Disallow: /.htaccess
+Disallow: /config.js
+Disallow: /server.py
+
+# 站点地图位置
+Sitemap: https://your-domain.com/sitemap.xml
+
+# 爬取延迟（秒）- 对服务器友好
+Crawl-delay: 1
+
+# 特定搜索引擎配置
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 1
+
+User-agent: bingbot
+Allow: /
+Crawl-delay: 1
+
+# 阻止恶意爬虫
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /

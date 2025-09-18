@@ -1,0 +1,26 @@
+{
+    "name": "张三 - 全栈开发者",
+    "short_name": "张三的网站",
+    "description": "专业全栈开发者，提供现代化Web开发、UI/UX设计和响应式开发服务",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#2563eb",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "favicon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "favicon.ico",
+            "sizes": "32x32 48x48",
+            "type": "image/x-icon"
+        }
+    ],
+    "categories": ["portfolio", "business", "developer"],
+    "lang": "zh-CN",
+    "scope": "/"
+}

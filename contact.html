@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <!-- 基础元数据 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- SEO 优化 -->
+    <title>联系我 - 张三 | 专业Web开发服务咨询</title>
+    <meta name="description" content="与张三联系，获取专业的Web开发、UI/UX设计服务咨询。提供多种联系方式，快速响应，专业服务。期待与您合作！">
+    <meta name="keywords" content="联系张三,Web开发咨询,项目合作,技术服务,全栈开发服务">
+    <meta name="author" content="张三">
+    <meta name="robots" content="index, follow">
+
+    <!-- 开放图谱标签 -->
+    <meta property="og:title" content="联系我 - 张三 | 专业Web开发服务">
+    <meta property="og:description" content="与张三联系，获取专业的Web开发、UI/UX设计服务咨询">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-domain.com/contact.html">
+    <meta property="og:image" content="https://your-domain.com/favicon.svg">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://your-domain.com/contact.html">
+
+    <!-- 非关键CSS延迟加载 -->
+    <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles.css"></noscript>
+
+    <!-- 资源预加载优化 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
+
+    <!-- 网站图标 -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon.svg">
+    <link rel="manifest" href="site.webmanifest">
+
+    <!-- 预加载关键资源 -->
+    <link rel="preload" href="config.js" as="script">
+    <link rel="preload" href="script.js" as="script">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+
+    <!-- 预加载其他页面，提升导航速度 -->
+    <link rel="prefetch" href="index.html">
+    <link rel="prefetch" href="about.html">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">我的网站</a>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                <li><a href="about.html">关于我</a></li>
+                <li><a href="contact.html" class="active">联系我</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <main>
+            <h1>联系我</h1>
+
+            <div class="hero-section">
+                <h2 class="hero-title">📧 让我们建立联系</h2>
+                <p class="hero-subtitle">合作、交流或简单的问好，都欢迎与我联系</p>
+            </div>
+
+            <h2>🚀 快速联系</h2>
+            <p>
+                无论是项目合作、技术交流还是单纯的问好，我都很乐意与您交流。
+                请选择最适合您的联系方式，我会尽快回复您。
+            </p>
+
+            <h2>📝 联系表单</h2>
+            <div class="contact-form">
+                <form action="#" method="post">
+                    <div class="form-group">
+                        <label for="name">姓名 *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">邮箱 *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">主题</label>
+                        <input type="text" id="subject" name="subject">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">消息 *</label>
+                        <textarea id="message" name="message" placeholder="请在这里输入您的消息..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn">发送消息</button>
+                </form>
+            </div>
+
+            <h2>📞 联系方式</h2>
+            <div class="contact-info">
+                <div class="contact-card">
+                    <div class="contact-icon">✉️</div>
+                    <h3>电子邮件</h3>
+                    <p>your-email@example.com</p>
+                    <p>通常在24小时内回复</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">📱</div>
+                    <h3>微信</h3>
+                    <p>your-wechat-id</p>
+                    <p>即时沟通，快速响应</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">📞</div>
+                    <h3>电话</h3>
+                    <p>+86 123-4567-8901</p>
+                    <p>工作时间内欢迎致电</p>
+                </div>
+            </div>
+
+            <h2>⏰ 回复时间</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">⚡</div>
+                    <h3 class="skill-title">紧急事务</h3>
+                    <p class="skill-description">在消息中注明"紧急"，我会优先处理并在2小时内回复</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">📅</div>
+                    <h3 class="skill-title">常规回复</h3>
+                    <p class="skill-description">一般在24-48小时内回复，工作日内会更快一些</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🕰️</div>
+                    <h3 class="skill-title">最佳联系时间</h3>
+                    <p class="skill-description">周一至周五 9:00-18:00（北京时间）会获得最快回复</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 我的个人网站. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <!-- 配置文件（必须在script.js之前加载） -->
+    <script src="config.js" defer></script>
+    <script src="script.js" defer></script>
+</body>
+</html>

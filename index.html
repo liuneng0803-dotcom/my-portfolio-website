@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <!-- 基础元数据 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- SEO 优化 -->
+    <title>张三 - 全栈开发者 | 专业Web开发服务</title>
+    <meta name="description" content="张三，专业全栈开发者，提供现代化Web开发、UI/UX设计和响应式开发服务。拥有丰富的前端和后端开发经验，致力于创造优秀的数字体验。">
+    <meta name="keywords" content="全栈开发,Web开发,前端开发,后端开发,UI设计,响应式网站,JavaScript,React,Node.js">
+    <meta name="author" content="张三">
+    <meta name="robots" content="index, follow">
+
+    <!-- 开放图谱标签 (Open Graph) -->
+    <meta property="og:title" content="张三 - 全栈开发者">
+    <meta property="og:description" content="专业全栈开发者，提供现代化Web开发、UI/UX设计和响应式开发服务">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-domain.com">
+    <meta property="og:locale" content="zh_CN">
+    <meta property="og:image" content="https://your-domain.com/favicon.svg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter 卡片标签 -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="张三 - 全栈开发者">
+    <meta name="twitter:description" content="专业全栈开发者，提供现代化Web开发、UI/UX设计和响应式开发服务">
+    <meta name="twitter:image" content="https://your-domain.com/favicon.svg">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://your-domain.com">
+
+    <!-- 关键CSS内联 - 优化首屏渲染 -->
+    <style>
+        /* Critical CSS for above-the-fold content */
+        :root {
+            --primary-color: #2563eb;
+            --primary-hover: #1d4ed8;
+            --text-dark: #0f172a;
+            --text-light: #64748b;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --border-color: #e2e8f0;
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+            --text-base: 1rem;
+            --text-lg: 1.125rem;
+            --text-2xl: 1.5rem;
+            --text-3xl: 1.875rem;
+            --animation-base: 300ms;
+            --max-width: 1200px;
+            --border-radius: 0.5rem;
+            --easing: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-primary);
+            font-size: var(--text-base);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navigation - Critical for above-the-fold */
+        header { background: var(--bg-primary); box-shadow: var(--shadow-md); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--border-color); }
+        .nav-container { max-width: var(--max-width); margin: 0 auto; padding: 0 var(--spacing-md); display: flex; justify-content: space-between; align-items: center; height: 64px; }
+        .logo { font-size: var(--text-lg); font-weight: 600; color: var(--primary-color); text-decoration: none; }
+        nav ul { display: flex; list-style: none; gap: var(--spacing-xl); }
+        nav a { color: var(--text-light); text-decoration: none; font-weight: 500; transition: color var(--animation-base) var(--easing); }
+        nav a:hover, nav a.active { color: var(--primary-color); }
+        .mobile-menu-toggle { display: none; }
+
+        /* Container and main content */
+        .container { max-width: var(--max-width); margin: 0 auto; padding: var(--spacing-xl) var(--spacing-md); flex: 1; }
+        main { animation: fadeInUp var(--animation-base) var(--easing); }
+        h1, h2 { font-weight: 700; color: var(--text-dark); margin-bottom: var(--spacing-lg); }
+        h1 { font-size: var(--text-3xl); text-align: center; }
+        h2 { font-size: var(--text-2xl); }
+        p { margin-bottom: var(--spacing-md); color: var(--text-light); }
+
+        /* Hero section - Critical above-the-fold */
+        .hero-section { text-align: center; margin: var(--spacing-xl) 0; padding: var(--spacing-xl) 0; background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%); border-radius: var(--border-radius); }
+        .hero-title { font-size: var(--text-2xl); font-weight: 600; color: var(--text-dark); margin-bottom: var(--spacing-md); }
+        .hero-subtitle { font-size: var(--text-lg); color: var(--text-light); margin: 0; }
+
+        /* Skip link for accessibility */
+        .skip-link { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+        .skip-link:focus { position: static; width: auto; height: auto; }
+
+        /* Loading indicator */
+        .loading-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-primary); z-index: 9999; display: flex; align-items: center; justify-content: center; transition: opacity 0.3s ease; }
+        .loading-spinner { width: 40px; height: 40px; border: 3px solid var(--border-color); border-top: 3px solid var(--primary-color); border-radius: 50%; animation: spin 1s linear infinite; }
+        .loading-overlay.hidden { opacity: 0; pointer-events: none; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* Ensure content is visible before JS loads */
+        .no-js main { opacity: 1; transform: none; }
+
+        /* Fade in animation */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Mobile responsiveness - Critical */
+        @media (max-width: 768px) {
+            .nav-container { padding: 0 var(--spacing-md); height: 56px; }
+            nav ul { display: none; }
+            .mobile-menu-toggle { display: flex; flex-direction: column; gap: 4px; cursor: pointer; border: none; background: none; }
+            .mobile-menu-toggle span { width: 20px; height: 2px; background: var(--text-dark); transition: all var(--animation-base) var(--easing); }
+            h1 { font-size: var(--text-2xl); }
+            .hero-title { font-size: var(--text-lg); }
+            .container { padding: var(--spacing-lg) var(--spacing-md); }
+        }
+    </style>
+
+    <!-- 加载指示器脚本 -->
+    <script>
+        // 最小化的首屏脚本 - 不依赖外部资源
+        (function() {
+            // 检测 JavaScript 支持
+            document.documentElement.classList.remove('no-js');
+
+            // 创建加载指示器
+            var loadingOverlay = document.createElement('div');
+            loadingOverlay.className = 'loading-overlay';
+            loadingOverlay.innerHTML = '<div class="loading-spinner"></div>';
+            document.body.appendChild(loadingOverlay);
+
+            // 记录开始时间
+            window.pageStartTime = performance.now();
+
+            // 页面加载完成后隐藏加载指示器
+            function hideLoader() {
+                setTimeout(function() {
+                    loadingOverlay.classList.add('hidden');
+                    setTimeout(function() {
+                        loadingOverlay.remove();
+                    }, 300);
+                }, Math.max(200 - (performance.now() - window.pageStartTime), 0)); // 最少显示200ms
+            }
+
+            if (document.readyState === 'complete') {
+                hideLoader();
+            } else {
+                window.addEventListener('load', hideLoader);
+            }
+        })();
+    </script>
+
+    <!-- 关键CSS内联后，主样式表可以异步加载 -->
+    <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles.css"></noscript>
+
+    <!-- 优化字体加载 -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" crossorigin>
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" crossorigin></noscript>
+
+    <!-- 资源预连接优化 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- 网站图标 -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon.svg">
+    <link rel="manifest" href="site.webmanifest">
+
+    <!-- 预加载关键资源 -->
+    <link rel="preload" href="config.js" as="script">
+    <link rel="preload" href="script.js" as="script">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+
+    <!-- 预加载其他页面，提升导航速度 -->
+    <link rel="prefetch" href="about.html">
+    <link rel="prefetch" href="contact.html">
+
+    <!-- 结构化数据 (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "张三",
+        "jobTitle": "全栈开发者",
+        "description": "专业全栈开发者，提供现代化Web开发、UI/UX设计和响应式开发服务",
+        "url": "https://your-domain.com",
+        "sameAs": [
+            "https://github.com/yourname",
+            "https://linkedin.com/in/yourname"
+        ],
+        "knowsAbout": ["Web开发", "JavaScript", "React", "Node.js", "UI/UX设计"],
+        "worksFor": {
+            "@type": "Organization",
+            "name": "自由职业"
+        }
+    }
+    </script>
+</head>
+<body>
+    <!-- 跳过导航链接（可访问性） -->
+    <a href="#main-content" class="skip-link">跳过导航</a>
+
+    <!-- 页面头部导航 -->
+    <header role="banner">
+        <nav role="navigation" aria-label="主导航">
+            <div class="nav-container">
+                <a href="index.html" class="logo" aria-label="回到首页">我的网站</a>
+                <button class="mobile-menu-toggle" aria-label="切换移动端菜单" aria-expanded="false" aria-controls="main-navigation">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </button>
+                <ul id="main-navigation" role="menubar">
+                    <li role="none">
+                        <a href="index.html" class="active" role="menuitem" aria-current="page">首页</a>
+                    </li>
+                    <li role="none">
+                        <a href="about.html" role="menuitem">关于我</a>
+                    </li>
+                    <li role="none">
+                        <a href="contact.html" role="menuitem">联系我</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 主要内容区域 -->
+    <div class="container">
+        <main id="main-content" role="main" tabindex="-1">
+            <!-- 英雄区域 -->
+            <section class="hero-section" aria-labelledby="hero-heading">
+                <h1 id="hero-heading" class="hero-title">欢迎来到我的数字世界</h1>
+                <p class="hero-subtitle">一个充满创意与技术的个人空间</p>
+            </section>
+
+            <!-- 个人介绍区域 -->
+            <section aria-labelledby="intro-heading">
+                <h2 id="intro-heading">👋 你好，我是一名开发者</h2>
+                <p>
+                    欢迎访问我的个人网站！这里是我展示项目作品、分享技术心得和与大家交流的数字家园。
+                    我热衷于用代码创造有价值的数字体验，让技术服务于生活。
+                </p>
+            </section>
+
+            <!-- 技能展示区域 -->
+            <section aria-labelledby="skills-heading">
+                <h2 id="skills-heading">🚀 我在做什么</h2>
+                <div class="skills-grid" role="list" aria-label="技能列表">
+                    <article class="skill-card" role="listitem">
+                        <div class="skill-icon" aria-hidden="true">💻</div>
+                        <h3 class="skill-title">Web 开发</h3>
+                        <p class="skill-description">专注于现代化的前端和后端技术，创建用户友好的web应用程序</p>
+                    </article>
+                    <article class="skill-card" role="listitem">
+                        <div class="skill-icon" aria-hidden="true">🎨</div>
+                        <h3 class="skill-title">UI/UX 设计</h3>
+                        <p class="skill-description">关注用户体验，设计简洁美观、直观易用的界面</p>
+                    </article>
+                    <article class="skill-card" role="listitem">
+                        <div class="skill-icon" aria-hidden="true">📱</div>
+                        <h3 class="skill-title">响应式开发</h3>
+                        <p class="skill-description">确保网站在各种设备上都能完美显示和运行</p>
+                    </article>
+                </div>
+            </section>
+
+            <!-- 网站导览区域 -->
+            <section aria-labelledby="navigation-heading">
+                <h2 id="navigation-heading">🎯 网站导览</h2>
+                <p>
+                    通过导航菜单探索网站的不同部分，了解更多关于我的信息：
+                </p>
+                <ul>
+                    <li><strong>关于我</strong> - 详细了解我的技能、经验和个人理念</li>
+                    <li><strong>联系我</strong> - 通过多种方式与我建立联系，期待与您交流</li>
+                </ul>
+            </section>
+
+            <!-- 学习理念区域 -->
+            <section aria-labelledby="learning-heading">
+                <h2 id="learning-heading">💡 持续学习与成长</h2>
+                <p>
+                    技术世界日新月异，我始终保持学习的热情。无论是新的编程语言、框架，
+                    还是设计理念和用户体验，我都在不断探索和实践。
+                    这个网站也会随着我的成长而持续更新，记录我的学习和创作历程。
+                </p>
+            </section>
+        </main>
+    </div>
+
+    <!-- 页面底部 -->
+    <footer role="contentinfo">
+        <div class="container">
+            <p>&copy; 2024 我的个人网站. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <!-- 配置文件（必须在script.js之前加载） -->
+    <script src="config.js" defer></script>
+    <script src="script.js" defer></script>
+</body>
+</html>

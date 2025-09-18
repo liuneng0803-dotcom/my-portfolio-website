@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <!-- 基础元数据 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- SEO 优化 -->
+    <title>关于我 - 张三 | 全栈开发者的技能与经验</title>
+    <meta name="description" content="了解张三的专业技能、工作经验和个人理念。全栈开发者，专精前端和后端技术，擅长JavaScript、React、Node.js等现代技术栈。">
+    <meta name="keywords" content="张三,全栈开发者,技能,经验,JavaScript,React,Vue,Node.js,个人简介">
+    <meta name="author" content="张三">
+    <meta name="robots" content="index, follow">
+
+    <!-- 开放图谱标签 -->
+    <meta property="og:title" content="关于我 - 张三 | 全栈开发者">
+    <meta property="og:description" content="了解张三的专业技能、工作经验和个人理念">
+    <meta property="og:type" content="profile">
+    <meta property="og:url" content="https://your-domain.com/about.html">
+    <meta property="og:image" content="https://your-domain.com/favicon.svg">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://your-domain.com/about.html">
+
+    <!-- 非关键CSS延迟加载 -->
+    <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles.css"></noscript>
+
+    <!-- 资源预加载优化 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
+
+    <!-- 网站图标 -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon.svg">
+    <link rel="manifest" href="site.webmanifest">
+
+    <!-- 预加载关键资源 -->
+    <link rel="preload" href="config.js" as="script">
+    <link rel="preload" href="script.js" as="script">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+
+    <!-- 预加载其他页面，提升导航速度 -->
+    <link rel="prefetch" href="index.html">
+    <link rel="prefetch" href="contact.html">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">我的网站</a>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                <li><a href="about.html" class="active">关于我</a></li>
+                <li><a href="contact.html">联系我</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <main>
+            <h1>关于我</h1>
+
+            <div class="hero-section">
+                <h2 class="hero-title">👨‍💻 数字世界的创造者</h2>
+                <p class="hero-subtitle">热爱编程、设计和创新的开发者</p>
+            </div>
+
+            <h2>🚀 个人简介</h2>
+            <p>
+                作为一名充满激情的开发者，我致力于通过代码创造有意义的数字体验。
+                我相信技术不仅仅是工具，更是改变世界的力量。每一行代码都承载着
+                解决问题和提升用户体验的使命。
+            </p>
+
+            <h2>🎯 技术专长</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">🌐</div>
+                    <h3 class="skill-title">前端开发</h3>
+                    <p class="skill-description">HTML5, CSS3, JavaScript, 响应式设计，现代化框架</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">⚙️</div>
+                    <h3 class="skill-title">后端技术</h3>
+                    <p class="skill-description">服务器开发、数据库设计、API 构建</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🎨</div>
+                    <h3 class="skill-title">UI/UX 设计</h3>
+                    <p class="skill-description">用户体验设计、原型制作、视觉设计</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">📦</div>
+                    <h3 class="skill-title">开发工具</h3>
+                    <p class="skill-description">Git, 版本控制、项目管理、自动化构建</p>
+                </div>
+            </div>
+
+            <h2>🏆 技术栈</h2>
+            <p>我的技术能力覆盖了现代Web开发的各个层面：</p>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">💻</div>
+                    <h3 class="skill-title">编程语言</h3>
+                    <ul class="skill-list">
+                        <li>JavaScript (ES6+)</li>
+                        <li>HTML5 & CSS3</li>
+                        <li>Python</li>
+                        <li>TypeScript</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🏧</div>
+                    <h3 class="skill-title">框架与库</h3>
+                    <ul class="skill-list">
+                        <li>React / Vue.js</li>
+                        <li>Node.js</li>
+                        <li>Express.js</li>
+                        <li>Bootstrap / Tailwind</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>💡 设计理念</h2>
+            <p>
+                我始终坚持“用户至上”的设计理念，相信优秀的数字产品应该同时具备功能性和美观性。
+                我致力于编写清晰、可维护的代码，并持续关注最新的技本趋势和最佳实践。
+            </p>
+            <p>
+                技本不仅仅是工具，更是连接想法与现实的桥梁。我喜欢接受挑战，
+                将复杂的问题分解为简单的解决方案，并始终保持对学习的热情。
+            </p>
+
+            <h2>🚀 未来规划</h2>
+            <p>
+                作为一名成长型的开发者，我的目标不仅仅是掌握技术，更是要成为一个
+                能够独立解决问题的全栈开发者。我希望：
+            </p>
+            <ul>
+                <li><strong>技术深度</strong> - 持续探索前泿技术，加深对技术本质的理解</li>
+                <li><strong>项目经验</strong> - 参与更多具有挑战性的实际项目</li>
+                <li><strong>知识分享</strong> - 通过博客、教程和开源项目回馈社区</li>
+                <li><strong>团队协作</strong> - 与优秀的开发团队合作，共同创造优秀产品</li>
+            </ul>
+            <p>
+                我相信每一次的学习和实践都是向着更好的自己迈进一步。
+                在这个快速变化的数字时代，我愿意做一名终身学习者，不断探索和创新。
+            </p>
+        </main>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 我的个人网站. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <!-- 配置文件（必须在script.js之前加载） -->
+    <script src="config.js" defer></script>
+    <script src="script.js" defer></script>
+</body>
+</html>

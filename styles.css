@@ -1,0 +1,1033 @@
+/* ========== 现代化个人网站样式表 ========== */
+/*
+ * 版本: 2.0.1
+ * 作者: 张三
+ * 描述: 全面优化的响应式个人网站样式
+ * 特性: 现代设计、可访问性、性能优化、服务器优化
+ * 更新: 2024年 - 本地服务器优化版本
+ *
+ * 目录:
+ * 1. 字体和基础设置
+ * 2. CSS变量定义
+ * 3. 基础样式和重置
+ * 4. 导航系统
+ * 5. 主要内容区域
+ * 6. 组件样式
+ * 7. 动画和交互
+ * 8. 可访问性优化
+ * 9. 性能优化
+ * 10. 响应式设计
+ */
+
+/* ========== 1. 字体和基础设置 ========== */
+/* 字体预加载优化 - 使用font-display: swap提高加载性能 */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ========== 2. CSS变量定义 ========== */
+/* 设计系统 - 统一的颜色、间距和动画配置 */
+:root {
+    /* 主要颜色 */
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+    --secondary-color: #64748b;
+    --accent-color: #0ea5e9;
+
+    /* 文本颜色 */
+    --text-dark: #0f172a;
+    --text-light: #64748b;
+    --text-muted: #94a3b8;
+
+    /* 背景颜色 */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --bg-accent: #f1f5f9;
+    --bg-overlay: rgba(15, 23, 42, 0.8);
+
+    /* 边框和分割线 */
+    --border-color: #e2e8f0;
+    --border-hover: #cbd5e1;
+
+    /* 阴影系统 */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+    /* 间距系统 */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+
+    /* 字体大小 */
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.5rem;
+    --text-3xl: 1.875rem;
+    --text-4xl: 2.25rem;
+
+    /* 动画配置 */
+    --animation-fast: 150ms;
+    --animation-base: 300ms;
+    --animation-slow: 600ms;
+    --easing: cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* 布局配置 */
+    --max-width: 1200px;
+    --border-radius: 0.5rem;
+    --border-radius-lg: 1rem;
+}
+
+/* ========== 3. 基础样式和重置 ========== */
+/* 现代CSS重置和基础样式 */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px; /* 基础字体大小 */
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-size: var(--text-base);
+    line-height: 1.7;
+    color: var(--text-dark);
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-accent) 100%);
+    min-height: 100vh;
+    font-feature-settings: 'kern' 1;
+    text-rendering: optimizeLegibility;
+}
+
+/* 通用容器 */
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+/* 改善选中文本的样式 */
+::selection {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+::-moz-selection {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* 现代化导航栏 */
+nav {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow-sm);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+nav ul li a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+nav ul li a:hover {
+    color: var(--primary-color);
+    background-color: var(--bg-accent);
+}
+
+nav ul li a.active {
+    color: var(--primary-color);
+    background-color: var(--bg-accent);
+    font-weight: 600;
+}
+
+/* 移动端汉堡菜单 */
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 4px;
+}
+
+.mobile-menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-dark);
+    transition: 0.3s;
+    border-radius: 2px;
+}
+
+/* 主要内容区域 */
+main {
+    background-color: var(--bg-primary);
+    margin: 2rem auto;
+    padding: 3rem;
+    border-radius: 1rem;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-color);
+    max-width: 1000px;
+}
+
+/* 现代化标题 */
+h1 {
+    color: var(--text-dark);
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+h2 {
+    color: var(--text-dark);
+    margin: 2rem 0 1rem 0;
+    font-size: 1.75rem;
+    font-weight: 600;
+    position: relative;
+    padding-left: 1rem;
+}
+
+h2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    border-radius: 2px;
+}
+
+h3 {
+    color: var(--text-dark);
+    margin: 1.5rem 0 1rem 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+/* 优化段落样式 */
+p {
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-light);
+}
+
+/* 现代化页脚 */
+footer {
+    background: linear-gradient(135deg, var(--text-dark) 0%, #1e293b 100%);
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 3rem;
+    border-top: 1px solid var(--border-color);
+}
+
+/* 首页特色部分 */
+.hero-section {
+    text-align: center;
+    padding: 2rem 0 3rem 0;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(14, 165, 233, 0.05) 100%);
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-light);
+    margin-bottom: 2rem;
+}
+
+/* 技能展示网格 */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.skill-card {
+    background: var(--bg-primary);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.skill-icon {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.skill-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.skill-description {
+    font-size: 0.875rem;
+    color: var(--text-light);
+    margin-bottom: 0;
+}
+
+/* 联系信息卡片 */
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.contact-card {
+    background: var(--bg-primary);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.contact-icon {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+    margin: 0 auto 1rem auto;
+}
+
+/* 现代化联系表单 */
+.contact-form {
+    max-width: 600px;
+    margin: 2rem auto;
+    background: var(--bg-primary);
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    background-color: var(--bg-primary);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-group textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+/* 现代化按钮 */
+.btn {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+    color: white;
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+/* 列表样式 */
+ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+}
+
+li {
+    margin-bottom: 0.5rem;
+    color: var(--text-light);
+}
+
+li strong {
+    color: var(--text-dark);
+}
+
+/* 技能列表样式 */
+.skill-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.skill-list li {
+    padding: 0.25rem 0;
+    color: var(--text-light);
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+}
+
+.skill-list li::before {
+    content: '▸';
+    color: var(--primary-color);
+    margin-right: 0.5rem;
+    font-weight: bold;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    nav {
+        padding: 0.25rem 0;
+    }
+
+    .nav-container {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0 1rem;
+    }
+
+    .logo {
+        font-size: 1.1rem;
+    }
+
+    .mobile-menu-toggle {
+        display: none;
+    }
+
+    nav ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 0.5rem;
+        margin: 0;
+        padding: 0;
+        background: none;
+        box-shadow: none;
+    }
+
+    nav ul li a {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+        border-radius: 0.25rem;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    main {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+
+    h1 {
+        font-size: 2.25rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-info {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    main {
+        padding: 1rem;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    h1 {
+        font-size: 1.875rem;
+    }
+}
+
+/* ========== 动画和交互效果 ========== */
+
+/* 页面加载动画 */
+body {
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* 元素进入视窗动画 */
+.animate-ready {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.animate-ready.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 导航链接悬停动画 */
+nav ul li a {
+    transition: all 0.3s ease;
+}
+
+/* 技能卡片动画 */
+.skill-card {
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 表单验证样式 */
+.form-group.focused label {
+    color: var(--primary-color);
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+}
+
+.form-group input.error,
+.form-group textarea.error {
+    border-color: #ef4444;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.form-group input.success,
+.form-group textarea.success {
+    border-color: #22c55e;
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+}
+
+.field-error {
+    color: #ef4444;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    animation: shake 0.3s ease;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+/* 通知系统 */
+#notification-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.notification {
+    background: white;
+    padding: 1rem 1.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow-lg);
+    border-left: 4px solid var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 300px;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.3s ease;
+    pointer-events: all;
+}
+
+.notification.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.notification-success {
+    border-left-color: #22c55e;
+}
+
+.notification-error {
+    border-left-color: #ef4444;
+}
+
+.notification-close {
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    cursor: pointer;
+    color: var(--text-light);
+    margin-left: 1rem;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.notification-close:hover {
+    color: var(--text-dark);
+}
+
+/* 返回顶部按钮 */
+#back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.25rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+#back-to-top.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+#back-to-top:hover {
+    transform: scale(1.1);
+    box-shadow: var(--shadow-xl);
+}
+
+/* 技能进度条 */
+.skill-bars-section {
+    margin: 3rem 0;
+}
+
+.skill-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.skill-bar {
+    background: var(--bg-primary);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+}
+
+.skill-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.skill-name {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.skill-percentage {
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+.skill-progress {
+    width: 100%;
+    height: 8px;
+    background-color: var(--bg-accent);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.skill-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    width: 0%;
+    transition: width 1s ease;
+    border-radius: 4px;
+}
+
+/* 加载状态 */
+.btn:disabled {
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+/* 联系卡片悬停增强 */
+.contact-card {
+    transition: all 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* 移动端优化 */
+@media (max-width: 768px) {
+    #back-to-top {
+        width: 45px;
+        height: 45px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 1.1rem;
+    }
+
+    .notification {
+        min-width: 250px;
+        margin: 0 10px 0.5rem 10px;
+    }
+
+    #notification-container {
+        right: 10px;
+        left: 10px;
+    }
+
+    .skill-bars {
+        gap: 1rem;
+    }
+
+    .skill-bar {
+        padding: 1rem;
+    }
+}
+
+/* 平滑滚动 */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ========== 可访问性优化 ========== */
+
+/* 跳过导航链接（屏幕阅读器和键盘导航） */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: var(--primary-color);
+    color: white;
+    padding: 8px;
+    z-index: 10000;
+    text-decoration: none;
+    border-radius: 0 0 4px 4px;
+    font-weight: 500;
+    transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* 焦点可见性优化 */
+*:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* 改善焦点可见性的特殊元素 */
+button:focus,
+.btn:focus,
+input:focus,
+textarea:focus,
+select:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+/* 移除默认焦点样式（因为我们有自定义的） */
+button:focus,
+.btn:focus,
+input:focus,
+textarea:focus,
+select:focus,
+a:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* 高对比度模式支持 */
+@media (prefers-contrast: high) {
+    :root {
+        --primary-color: #000;
+        --text-dark: #000;
+        --text-light: #000;
+        --border-color: #000;
+    }
+
+    .skill-card,
+    .contact-card,
+    main {
+        border: 2px solid #000;
+    }
+}
+
+/* 减少动画设置（用户偏好） */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .animate-ready {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 暗色主题支持 */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary-color: #60a5fa;
+        --primary-hover: #3b82f6;
+        --text-dark: #f8fafc;
+        --text-light: #cbd5e1;
+        --bg-primary: #1e293b;
+        --bg-secondary: #0f172a;
+        --bg-accent: #334155;
+        --border-color: #475569;
+    }
+
+    body {
+        background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-accent) 100%);
+    }
+
+    nav {
+        background: rgba(30, 41, 59, 0.95);
+        border-bottom-color: var(--border-color);
+    }
+
+    .notification {
+        background: var(--bg-primary);
+        color: var(--text-dark);
+    }
+}
+
+/* 键盘导航增强 */
+.nav-container ul li a:focus,
+.nav-container .logo:focus {
+    background-color: var(--primary-color);
+    color: white;
+    transform: none;
+}
+
+/* 移动端触摸目标优化（至少44x44px） */
+@media (max-width: 768px) {
+    nav ul li a,
+    .btn,
+    button,
+    .mobile-menu-toggle {
+        min-height: 44px;
+        min-width: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .mobile-menu-toggle {
+        padding: 12px;
+    }
+}
+
+/* 字体大小可调整性 */
+@media (min-width: 1200px) {
+    html {
+        font-size: 18px; /* 基础字体稍大，提高可读性 */
+    }
+}
+
+/* ========== 性能优化 ========== */
+
+/* 硬件加速优化 */
+.skill-card,
+.contact-card,
+.btn,
+#back-to-top {
+    will-change: transform;
+}
+
+/* 图片延迟加载占位符 */
+img[loading="lazy"] {
+    background-color: var(--bg-accent);
+    min-height: 100px;
+}
+
+/* 字体显示优化 */
+@font-face {
+    font-family: 'Inter';
+    font-display: swap; /* 优化字体加载 */
+}
+
+/* ========== 打印样式 ========== */
+@media print {
+    * {
+        background: white !important;
+        color: black !important;
+        box-shadow: none !important;
+    }
+
+    nav,
+    #back-to-top,
+    .mobile-menu-toggle,
+    .notification,
+    footer {
+        display: none !important;
+    }
+
+    main {
+        margin: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+    }
+
+    .skill-card,
+    .contact-card {
+        break-inside: avoid;
+        border: 1px solid #ccc;
+        margin-bottom: 1rem;
+    }
+
+    a[href^="http"]:after {
+        content: " (" attr(href) ")";
+        font-size: 0.8em;
+        color: #666;
+    }
+}

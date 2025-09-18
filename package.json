@@ -1,0 +1,46 @@
+{
+  "name": "my-portfolio-website",
+  "version": "2.0.0",
+  "description": "现代化响应式个人网站，具备完整的性能优化和可访问性支持",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 server.py 8000",
+    "serve": "npx http-server -p 8000 -c-1 --cors",
+    "dev": "npx live-server --port=8000 --no-browser",
+    "test": "echo \"打开 http://localhost:8000 测试网站\" && npm run serve",
+    "build": "echo \"静态网站，无需构建\"",
+    "validate": "echo \"验证HTML、CSS和JS代码质量\"",
+    "audit": "echo \"性能和可访问性审计\""
+  },
+  "keywords": [
+    "portfolio",
+    "personal-website",
+    "responsive",
+    "modern-web",
+    "performance",
+    "accessibility",
+    "seo"
+  ],
+  "author": {
+    "name": "张三",
+    "email": "your-email@example.com",
+    "url": "https://your-domain.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/my-portfolio-website.git"
+  },
+  "homepage": "https://your-domain.com",
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not IE 11"
+  ],
+  "devDependencies": {},
+  "dependencies": {},
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
