@@ -72,10 +72,11 @@
     --text-4xl: 2.25rem;
 
     /* 动画配置 */
-    --animation-fast: 150ms;
-    --animation-base: 300ms;
-    --animation-slow: 600ms;
+    --animation-fast: 100ms;
+    --animation-base: 150ms;
+    --animation-slow: 300ms;
     --easing: cubic-bezier(0.4, 0, 0.2, 1);
+    --page-transition: opacity 0.1s ease;
 
     /* 布局配置 */
     --max-width: 1200px;
@@ -109,6 +110,8 @@ body {
     min-height: 100vh;
     font-feature-settings: 'kern' 1;
     text-rendering: optimizeLegibility;
+    /* 页面切换动画支持 */
+    transition: opacity 0.15s ease, transform 0.15s ease;
 }
 
 /* 通用容器 */
@@ -171,13 +174,15 @@ nav ul li a {
     font-size: 0.95rem;
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
-    transition: all 0.3s ease;
+    transition: all var(--animation-fast) var(--easing), transform var(--animation-fast) var(--easing);
     position: relative;
+    will-change: transform;
 }
 
 nav ul li a:hover {
     color: var(--primary-color);
     background-color: var(--bg-accent);
+    transform: translateY(-2px);
 }
 
 nav ul li a.active {
@@ -994,6 +999,74 @@ img[loading="lazy"] {
 @font-face {
     font-family: 'Inter';
     font-display: swap; /* 优化字体加载 */
+}
+
+/* ========== 页面切换动画 ========== */
+/* 页面切换动画效果 */
+.page-transition-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-primary);
+    z-index: 9998;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.1s ease;
+}
+
+.page-transition-overlay.show {
+    opacity: 0.95;
+    pointer-events: all;
+}
+
+/* 优化页面渲染性能 */
+body.navigating {
+    pointer-events: none;
+}
+
+body.navigating * {
+    animation-play-state: paused;
+}
+
+/* 减少重绘和回流 */
+.will-change {
+    will-change: transform, opacity;
+}
+
+/* 性能优化的动画 */
+@keyframes fastFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fast-fade-in {
+    animation: fastFadeIn 0.15s ease-out;
+}
+
+/* 预加载状态指示 */
+.preloading::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: var(--primary-color);
+    opacity: 0.3;
+    animation: loadingBar 2s infinite linear;
+}
+
+@keyframes loadingBar {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(5000%); }
 }
 
 /* ========== 打印样式 ========== */

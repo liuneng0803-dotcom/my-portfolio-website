@@ -70,23 +70,51 @@ class NavigationManager {
     // 添加导航悬停动画和预加载
     addHoverAnimations() {
         document.querySelectorAll('nav a').forEach(link => {
+            // 立即预加载所有页面资源
+            const href = link.getAttribute('href');
+            if (href && href.endsWith('.html') && !href.startsWith('#')) {
+                this.preloadPage(href);
+            }
+
             link.addEventListener('mouseenter', function() {
                 this.style.transform = 'translateY(-2px)';
-
-                // 悬停时预加载页面，加快导航速度
-                const href = this.getAttribute('href');
-                if (href && href.endsWith('.html') && !href.startsWith('#')) {
-                    const prefetchLink = document.createElement('link');
-                    prefetchLink.rel = 'prefetch';
-                    prefetchLink.href = href;
-                    document.head.appendChild(prefetchLink);
-                }
             });
 
             link.addEventListener('mouseleave', function() {
                 this.style.transform = 'translateY(0)';
             });
+
+            // 添加即时加载效果
+            link.addEventListener('click', this.handleInstantNavigation.bind(this));
         });
+    }
+
+    // 预加载页面资源
+    preloadPage(href) {
+        // 避免重复预加载
+        if (document.querySelector(`link[href="${href}"]`)) return;
+
+        const prefetchLink = document.createElement('link');
+        prefetchLink.rel = 'prefetch';
+        prefetchLink.href = href;
+        document.head.appendChild(prefetchLink);
+    }
+
+    // 处理即时导航
+    handleInstantNavigation(e) {
+        const href = e.currentTarget.getAttribute('href');
+        if (!href || href.startsWith('#') || href.includes('http')) return;
+
+        e.preventDefault();
+
+        // 添加页面切换动画
+        document.body.style.transition = 'opacity 0.1s ease';
+        document.body.style.opacity = '0.95';
+
+        // 极快的页面跳转
+        setTimeout(() => {
+            window.location.href = href;
+        }, 50);
     }
 }
 
@@ -102,21 +130,34 @@ class AnimationManager {
         this.setupIntersectionObserver();
     }
 
-    // 页面加载动画（优化版本）
+    // 页面加载动画（极速优化版本）
     addPageLoadAnimation() {
-        // 只在首次加载时添加动画，避免页面切换延迟
-        if (performance.navigation.type === 0) { // TYPE_NAVIGATE (首次加载)
-            document.body.style.opacity = '0';
-            document.body.style.transform = 'translateY(10px)';
+        // 检查是否为页面导航（不是刷新或历史记录）
+        const isNavigation = performance.navigation.type === 0;
+        const isFromSameOrigin = document.referrer && new URL(document.referrer).origin === window.location.origin;
 
-            // 减少动画时间，更快的响应
-            setTimeout(() => {
-                document.body.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        // 如果是站内导航，直接显示，无动画
+        if (isFromSameOrigin || sessionStorage.getItem('visited')) {
+            document.body.style.opacity = '1';
+            document.body.style.transform = 'translateY(0)';
+            return;
+        }
+
+        // 仅在首次访问网站时显示快速动画
+        if (isNavigation) {
+            document.body.style.opacity = '0';
+            document.body.style.transform = 'translateY(5px)';
+
+            // 极快的动画时间
+            requestAnimationFrame(() => {
+                document.body.style.transition = 'opacity 0.15s ease, transform 0.15s ease';
                 document.body.style.opacity = '1';
                 document.body.style.transform = 'translateY(0)';
-            }, 50); // 立即开始动画，不等待load事件
+            });
+
+            // 标记已访问
+            sessionStorage.setItem('visited', 'true');
         } else {
-            // 页面切换时直接显示，无动画
             document.body.style.opacity = '1';
             document.body.style.transform = 'translateY(0)';
         }
